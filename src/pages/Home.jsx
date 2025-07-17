@@ -1,0 +1,209 @@
+import { useEffect, useState } from 'react';
+import './Home.css';
+import Contact from './Contact.jsx';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+const weddingDate = new Date("2025-08-13T18:00:00"); // customize this date
+
+const Home = () => {
+//   const { address } = useContext(UploadContext);
+  const [timeLeft, setTimeLeft] = useState({});
+
+
+
+  useEffect(() => {
+    AOS.init({
+    duration: 1000,  // animation speed
+    once: false,     // 🔁 animate every time on scroll
+    });
+    const updateCountdown = () => {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        setTimeLeft({});
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-green-400 flex flex-col items-center justify-center px-4 py-16 text-center" 
+          style={{ backgroundColor: '#F5CBCB', color:"#2F5249" ,fontFamily:"Lucida Handwriting"
+        }}>
+
+      <p
+  style={{
+    color: "#6b0f2b",
+    textAlign: "center",
+    fontSize: "22px",
+    lineHeight: "1.8",
+    maxWidth: "700px",
+    fontFamily: "'Cormorant Garamond', serif"
+  }}
+>
+  Mark your calendars, bring your smiles (and your dancing shoes)!  
+  We’re tying the knot and can’t wait to celebrate this madness called love with you.  
+  Your presence means the world — your blessings, even more.  
+  Join us for the rituals, the laughter, the food… and all the fun that follows!
+</p>
+      
+      <h1 className="text-5xl font-serif font-bold " style={{marginTop:'20px'}}>You're Invited!</h1>
+      <p className="text-2xl  mb-2" style={{marginTop:"15px"}}>To the wedding of</p>
+      <h2 className="text-6xl font-bold text-pink-600" style={{fontFamily:"Papyrus", color:"#670D2F", marginTop:'20px'}}>abc 💖 ced</h2>
+      <div className="my-6">
+        <h2 className="text-lg text-gray-600 mb-1" style={{fontSize:"20px"}}>On</h2>
+        <style>
+        {`
+          @keyframes orbitIn {
+            0% {
+              transform: rotate(0deg) translateX(150px) rotate(0deg);
+              opacity: 0;
+            }
+            100% {
+              transform: rotate(360deg) translateX(0) rotate(-360deg);
+              opacity: 1;
+            }
+          }
+
+          .orbit-word {
+            display: inline-block;
+            margin: 0 0.4rem;
+            font-size: 2rem;
+            font-weight: bold;
+            animation: orbitIn 2s ease-out forwards;
+            transform-origin: center;
+            opacity: 0;
+          }
+
+          .delay-1 {
+            animation-delay: 0s;
+          }
+
+          .delay-2 {
+            animation-delay: 0.4s;
+          }
+
+          .delay-3 {
+            animation-delay: 0.8s;
+          }
+        `}
+      </style>
+        <p className="orbit-word" >December 14, 2025 at 5:00 PM</p>
+        {/* <p className="text-md text-gray-600 mt-2">{address || "Hyderabad, India"}</p> */}
+      </div>
+
+      <div  style={{fontFamily:"cursive", backgroundColor:"#f3f6d5ff", width:"500px", height:"100px", borderRadius:"20px"}} >
+        <h3 className="text-xl font-bold mb-2 text-pink-700" style={{marginTop:"15px"}} >Countdown to the Big Day</h3>
+        {Object.keys(timeLeft).length > 0 ? (
+          <div className="flex justify-around mt-4 text-lg font-mono" style={{fontSize: "30px", color:"#1e3d58"}}>
+            <div>{timeLeft.days}d</div>
+            <div>{timeLeft.hours}h</div>
+            <div>{timeLeft.minutes}m</div>
+            <div>{timeLeft.seconds}s</div>
+          </div>
+        ) : (
+          <p className="text-green-600 font-semibold">🎉 The day is here! 🎉</p>
+        )}
+      </div>
+
+      <div className="text-4xl" style={{marginTop:"50px"}}>
+            <h1>Introducing the Bride & Groom</h1>
+
+      </div>
+
+<section
+  className="flex flex-col md:flex-row justify-center items-center gap-11 py-10 px-4"
+  style={{ backgroundColor: '#F5CBCB', color: "#2F5249", width:'800px' }}
+  data-aos="fade-up"
+>
+  {/* Groom */}
+  <div className="w-full md:w-1/2 flex flex-col items-center" data-aos="zoom-in-right">
+    <img
+      src="https://images.unsplash.com/photo-1729347917808-e3e35a462fec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGluZGlhbiUyMGdyb29tfGVufDB8fDB8fHww"
+      alt="Groom"
+      className="shadow-xl w-72 h-96 object-cover transition-transform duration-700 hover:scale-105"
+      style={{ borderRadius: '40%' }}
+    />
+    <h3 className="text-xl font-semibold mt-4" style={{marginTop:"30px", fontSize:'30px'}}>abc</h3>
+    <p className="text-sm italic text-gray-700"style={{marginTop:"30px", fontSize:'20px'}}>S/o Mr. Prasad & Mrs. Sujatha</p>
+  </div>
+
+  {/* Bride */}
+  <div className="w-full md:w-1/2 flex flex-col items-center" data-aos="zoom-in-left">
+    <img
+      src="https://images.unsplash.com/photo-1610173827043-9db50e0d8ef9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW5kaWFuJTIwYnJpZGV8ZW58MHx8MHx8fDA%3D"
+      alt="Bride"
+      className="shadow-xl w-72 h-96 object-cover transition-transform duration-700 hover:scale-105"
+      style={{ borderRadius: '40%' }}
+    />
+    <h3 className="text-xl font-semibold mt-4" style={{marginTop:"30px", fontSize:'30px'}}>ddf</h3>
+    <p className="text-l italic text-gray-700" style={{marginTop:"30px", fontSize:'20px'}}>D/o Mr. Srinivas & Mrs. Padma</p>
+  </div>
+</section>
+
+
+
+
+{/* //Event section */}
+
+<section className="bg-pink-100 py-12 px-6"  style={{width:"1000px", backgroundColor: '#F5CBCB', marginBottom:"200px"}}> 
+  <h2 className="text-5xl font-bold text-center mb-10 text-rose-700">💫 Wedding Events</h2>
+
+  <div className="flex flex-wrap justify-center gap-8">
+    {[
+      { title: "Haldi", date: "Dec 12, 2025", time: "10:00 AM",
+        bg: "https://plus.unsplash.com/premium_photo-1670524465634-93cf255ffa8b?q=80&w=1154&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+      { title: "Mehendi", date: "Dec 13, 2025", time: "4:00 PM", 
+        bg: "https://images.unsplash.com/photo-1624504761718-be4d634f4624?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+      { title: "Wedding & Reception", date: "Dec 14, 2025", time: "5:00 PM",
+        bg: "https://images.unsplash.com/photo-1567530331069-630c6a3926f3?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    ].map((event, idx) => (
+      <div key={idx} className="flip-card w-[260px]" >
+        <div className="flip-card-inner">
+          <div className="flip-card-front" style={{
+              height:"300px",
+              backgroundImage: `url(${event.bg})`,
+              backgroundSize: 'cover',
+              fontFamily:'Lucida Handwriting',
+              backgroundPosition: 'center',
+              color: "#333",
+              textShadow: "0 1px 2px rgba(255,255,255,0.6)",
+              backgroundBlendMode: 'dark',
+              backgroundColor: 'rgba(255, 255, 255, 0.6)'
+            }}>
+              <div className="text-center">
+                <div className="text-xl font-bold" style={{fontSize:'25px', color:"#FFFCFB"}}>{event.title}</div>
+              </div>
+          </div>
+          <div className="flip-card-back" style={{height:"300px"}}>
+            <p className="font-semibold">{event.date}</p>
+            <p>{event.time}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+    <Contact />
+
+    </div>
+    
+  );
+};
+
+export default Home;
