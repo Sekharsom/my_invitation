@@ -164,43 +164,64 @@ const Home = () => {
 
 {/* //Event section */}
 
-<section className="bg-pink-100 py-12 px-6"  style={{width:"1000px", backgroundColor: '#F5CBCB', marginBottom:"200px"}}> 
-  <h2 className="text-5xl font-bold text-center mb-10 text-rose-700">💫 Wedding Events</h2>
+<section
+  className="bg-pink-100 py-12 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto"
+  style={{ backgroundColor: '#F5CBCB', marginBottom: "200px" }}
+>
+  <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 text-rose-700">
+    💫 Wedding Events
+  </h2>
 
-  <div className="flex flex-wrap justify-center gap-8">
+  <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
     {[
-      { title: "Haldi", date: "August 12, 2025", time: "4 PM onwards",
+      {
+        title: "Haldi",
+        date: "August 12, 2025",
+        time: "4 PM onwards",
         bg: "https://plus.unsplash.com/premium_photo-1670524465634-93cf255ffa8b?q=80&w=1154&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      address: "At Groom and Bride's homes" },
-      { title: "Mehendi", date: "August 12, 2025", time: "10 AM", 
+        address: "At Groom and Bride's homes",
+      },
+      {
+        title: "Mehendi",
+        date: "August 12, 2025",
+        time: "10 AM",
         bg: "https://images.unsplash.com/photo-1624504761718-be4d634f4624?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      address: "At Groom and Bride's homes" },
-      { title: "Wedding & Reception", date: "August 13, 2025", time: "Reception 6 PM onwards",
-        muhurtham: 'Muhurtham - 3:38 AM(14th early morning)',
+        address: "At Groom and Bride's homes",
+      },
+      {
+        title: "Wedding & Reception",
+        date: "August 13, 2025",
+        time: "Reception 6 PM onwards",
+        muhurtham: "Muhurtham - 3:38 AM (14th early morning)",
         bg: "https://images.unsplash.com/photo-1567530331069-630c6a3926f3?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        address: "SV Ramanarao Function Hall, Balajipeta, Bommur"}
+        address: "SV Ramanarao Function Hall, Balajipeta, Bommur",
+      },
     ].map((event, idx) => (
-      <div key={idx} className="flip-card w-[260px]" >
+      <div key={idx} className="flip-card w-[260px] h-[300px]">
         <div className="flip-card-inner">
-          <div className="flip-card-front" style={{
-              height:"300px",
+          <div
+            className="flip-card-front flex items-center justify-center text-center"
+            style={{
+              height: "300px",
               backgroundImage: `url(${event.bg})`,
-              backgroundSize: 'cover',
-              fontFamily:'Lucida Handwriting',
-              backgroundPosition: 'center',
-              color: "#333",
-              textShadow: "0 1px 2px rgba(255,255,255,0.6)",
-              backgroundBlendMode: 'dark',
-              backgroundColor: 'rgba(255, 255, 255, 0.6)'
-            }}>
-              <div className="text-center">
-                <div className="text-xl font-bold" style={{fontSize:'25px', color:"#FFFCFB"}}>{event.title}</div>
-              </div>
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              color: "#FFF",
+              fontFamily: "Lucida Handwriting",
+              textShadow: "0 1px 2px rgba(0,0,0,0.5)",
+              borderRadius: "12px",
+            }}
+          >
+            <div className="text-2xl font-bold px-2">{event.title}</div>
           </div>
-          <div className="flip-card-back" style={{height:"300px", lineHeight:"2"}}>
+
+          <div
+            className="flip-card-back text-center px-4 py-6 bg-white rounded-lg shadow-md"
+            style={{ height: "300px", lineHeight: "1.8" }}
+          >
             <p className="font-semibold">{event.date}</p>
             <p>{event.time}</p>
-            <p><strong>{event.muhurtham}</strong></p>
+            {event.muhurtham && <p><strong>{event.muhurtham}</strong></p>}
             <p>{event.address}</p>
           </div>
         </div>
@@ -208,6 +229,7 @@ const Home = () => {
     ))}
   </div>
 </section>
+
 
     <Contact />
 

@@ -15,10 +15,10 @@
 .flip-card-inner {
   position: relative;
   width: 100%;
-  height: 200px;
-  transition: transform 0.8s;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
   transform-style: preserve-3d;
-  border-radius: 1rem;
 }
 
 .flip-card:hover .flip-card-inner {
@@ -31,21 +31,11 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-
-.flip-card-front {
-  font-weight: bold;
-  font-size: 1.5rem;
+  border-radius: 12px;
 }
 
 .flip-card-back {
-  background-color: #ffe4e6;
+  background-color: #fff;
+  color: black;
   transform: rotateY(180deg);
-  flex-direction: column;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
