@@ -12,7 +12,7 @@ const Home = () => {
   const [timeLeft, setTimeLeft] = useState({});
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: false });
+    AOS.init({ duration: 600, once: false });
 
     const updateCountdown = () => {
       const now = new Date();
@@ -92,7 +92,7 @@ const Home = () => {
           data-aos="fade-up"
         >
           {/* Groom */}
-          <div className="w-full md:w-1/2 flex flex-col items-center" data-aos="zoom-in-right">
+          <div className="w-full md:w-1/2 flex flex-col items-center" loading="lazy" data-aos="zoom-in-right" data-aos-delay="100">
             <img
               src={img9}
               alt="Groom"
@@ -104,7 +104,7 @@ const Home = () => {
           </div>
 
           {/* Bride */}
-          <div className="w-full md:w-1/2 flex flex-col items-center" data-aos="zoom-in-left">
+          <div className="w-full md:w-1/2 flex flex-col items-center" loading="lazy" data-aos="zoom-in-left" data-aos-delay="300">
             <img
               src={img10}
               alt="Bride"
@@ -165,12 +165,23 @@ const Home = () => {
 
                   <div
                     className="flip-card-back text-center px-4 py-6 bg-white rounded-lg shadow-md"
-                    style={{ height: "300px", lineHeight: "1.8" }}
+                    style={{
+                              height: "300px",
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              textAlign: "center",
+                              lineHeight: "1.6",
+                              overflow: "hidden",
+                              padding: "1rem",
+                              color:'#893f71'
+                            }}
                   >
                     <p className="font-semibold">{event.date}</p>
                     <p>{event.time}</p>
                     {event.muhurtham && <p><strong>{event.muhurtham}</strong></p>}
-                    <p>{event.address}</p>
+                    <p style={{ wordWrap: "break-word", maxWidth: "220px" }}>{event.address}</p>
                   </div>
                 </div>
               </div>
