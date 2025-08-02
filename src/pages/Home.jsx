@@ -140,7 +140,7 @@ const Home = () => {
                 title: "Wedding & Reception",
                 date: "August 13, 2025",
                 time: "Reception 6 PM onwards",
-                muhurtham: "Muhurtham - 3:38 AM (14th early morning)",
+                muhurtham: "Muhurtham - 3:28 AM (14th early morning)",
                 bg: "https://images.unsplash.com/photo-1567530331069-630c6a3926f3?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 address: "SV Ramanarao Function Hall, Balajipeta, Bommur",
               },
